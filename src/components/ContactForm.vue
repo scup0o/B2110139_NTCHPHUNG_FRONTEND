@@ -1,7 +1,7 @@
 <template>
     <Form 
         @submit="submitContact"
-        :validation-schema="contactFormShema">
+        :validation-schema="contactFormSchema">
         <div class="form-group">
             <label for="name">Tên</label>
             <Field
@@ -21,7 +21,7 @@
                 class="form-control"
                 v-model="contactLocal.email">
             </Field>
-            <ErrorMessage name="email" class="error-feedback"></ErrorMessage>
+            <ErrorMessage name="email" class="error-feedback" as="p"></ErrorMessage>
         </div>
 
         <div class="form-group">
@@ -86,7 +86,7 @@
             contact: {type: Object, required: true}
         },
         data(){
-            const contactFormSchema = yup.object().shape({
+            const contactFormSchema = yup.object({
                 name: yup
                     .string()
                     .required("Tên phải có giá trị.")
